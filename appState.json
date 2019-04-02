@@ -18,7 +18,7 @@
         "id": "16e8ed21-8b13-496c-8a07-ff6b94c7e9e7",
         "parent": "33934c41-a5f8-4f8f-9d03-8d207726a4e8",
         "name": "process-and-persist-record.js",
-        "type": "LAMBDA_FILE",
+        "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
@@ -33,13 +33,19 @@
             }
           }
         ],
-        "version": 3
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        }
       },
       "bad406e2-4d28-4698-b061-3ab30fb2fa0b": {
         "id": "bad406e2-4d28-4698-b061-3ab30fb2fa0b",
         "parent": "33934c41-a5f8-4f8f-9d03-8d207726a4e8",
         "name": "publish-activity-stream.js",
-        "type": "LAMBDA_FILE",
+        "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
@@ -51,9 +57,16 @@
             "config": {}
           }
         ],
-        "version": 1
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        }
       }
     },
+    "deletedFiles": [],
     "rootNode": "33934c41-a5f8-4f8f-9d03-8d207726a4e8",
     "openFiles": [
       "bad406e2-4d28-4698-b061-3ab30fb2fa0b",
@@ -132,39 +145,48 @@
         "globallyEditable": false
       }
     },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "editable": false,
+        "shouldPersist": false,
+        "displayOnly": false
+      }
+    ],
     "packageJSON": {
       "dependencies": {
         "aws-sdk": {
           "name": "aws-sdk",
           "version": "2.176.0",
-          "notRemovable": true
-        },
-        "slappforge-sdk": {
-          "name": "@slappforge/slappforge-sdk",
-          "version": "0.0.3",
           "notRemovable": true,
-          "types": "\n                    declare class RDSQueryParams {\n    instanceIdentifier: string;\n    query: string;\n    inserts: Array<any>\n}\n\ndeclare namespace SL.AWS {\n    class RDS {\n        query(params: RDSQueryParams, callback: Function, connection: any): void;\n\n        beginTransaction(params: any, callback: Function): void;\n    }\n\n    class SQS {\n        receiveAndDeleteMessages(params: any, filteringCallBack: Function, deleteCallBack: Function, errorCallBack: Function): void;\n    }\n}\n"
+          "language": "javascript",
+          "dev": true
         }
       }
     },
     "lambdaId": "16e8ed21-8b13-496c-8a07-ff6b94c7e9e7",
-    "additionalFiles": [],
-    "envVariables": [
-      {
-        "lambdaId": "all",
-        "varKey": "SIGMA_AWS_ACC_ID",
-        "varValue": "",
-        "editable": false
-      }
-    ]
+    "additionalFiles": []
   },
   "PROJECT_META": {
     "projectName": "real-time-stream-processor",
     "projectDescription": "A sample use case of the usage of AWS Kinesis with AWS Lambda (Real-time Stream Processing: Application Activity Tracking)",
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
-    "repoName": "real-time-stream-processor",
-    "repoUrl": "https://github.com/slappforge/real-time-stream-processor",
-    "lastSave": 1522210975132
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1554191624287
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "real-time-stream-processor",
+      "url": "https://github.com/janakaud/real-time-stream-processor"
+    }
   }
 }
